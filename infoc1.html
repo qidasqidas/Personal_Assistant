@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Page</title>
+    <link rel="icon" href="https://teds-jarvis.netlify.app//iron-pic.png">
+</head>
+<body>    <br><br><br>
+    <center>
+    <h1 style="color:white;">Let's Begin</h1>
+  <br><br><br>
+  <div id="named">
+    <p style="color: rgb(216, 198, 198);" id="text">Let's Start Creating Your Own Personal Assistant
+      <br><br> With
+       Entering Your Name.</p>
+       <br><br>
+       <input type="text" id="Name">
+       <br><br>
+  </div>
+  <hr>
+  <div class="nine" id="aged">
+    <p style="color: rgb(216, 198, 198);" id="text">Enter your age</p>
+       <br><br>
+       <input type="number" id="Age">
+       <br><br>
+  </div>
+  <hr>
+  <div class="nine" id="pa">
+    <p style="color: rgb(216, 198, 198);" id="text">Enter Your Personal Assistant Name</p>
+       <br><br>
+       <input type="text" id="PAName">
+       <br><br>
+  </div>
+  <hr>
+  <div class="nine" id="gitid">
+    <p style="color: rgb(216, 198, 198);" id="text">Enter Your Github Id</p>
+       <br><br>
+       <input type="text" id="gitidf">
+       <br><br>
+  </div>
+  <hr>
+  <div class="nine" id="cityname">
+    <p style="color: rgb(216, 198, 198);" id="text">Enter Your City Name</p>
+       <br><br>
+       <input type="text" id="citynamev">
+       <br><br>
+  </div>
+  <hr>
+  <div class="nine" id="bd">
+    <p style="color: rgb(216, 198, 198);" id="text">Enter Your Birth Date</p>
+       <br><br>
+       <input type="date" id="bdv">
+       <br><br>
+  </div>
+        <button class="side-b" onclick="change()">Back</button>
+        <br><br>
+    </center>
+    <script>
+ document.getElementById("Name").value = localStorage.getItem("Name");
+ document.getElementById("Age").value = localStorage.getItem("Age");
+ document.getElementById("PAName").value = localStorage.getItem("PA");
+ document.getElementById("gitidf").value = localStorage.getItem("GITID");
+ document.getElementById("citynamev").value = localStorage.getItem("City");
+ document.getElementById("bdv").value = localStorage.getItem("BirthDate");
+ function change(){
+location.replace("main.html")
+ }
+    </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,200;1,300&display=swap");
+body{
+    background-color: black;
+}
+hr{
+    border-radius: 20px;
+    background-color: white;
+    width: 500px;
+}
+.nine{
+width: 100%;
+margin-top: 20px;
+margin-bottom: 20px;
+}
+.side-b{
+    background-color: white;
+    height: 40px;
+    width: 10%;
+    border: 2px solid black;
+    border-radius: 5px;
+    color:black;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.side-b:hover{
+    background-color: white;
+    height: 40px;
+    width: 10%;
+    border: 2px solid black;
+    border-radius: 5px;
+    color:black;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:  4px 4px  white;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+input{
+    width: 20%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+text-align: center;  
+color: black;  
+}
+    </style>
+</body>
+</html>

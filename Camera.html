@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body style="display: flex;justify-content: center;align-items: center;min-height: 100%;background-color: black;">
+  <button id="start-camera" style="display: none;">Start Camera</button>
+  <div>
+<br><br><br>
+    <center> <video style="border: 2px solid white;border-radius: 20px;width: 80%;height: 80%;" id="video" width="320" height="240" autoplay></video><br><br>
+      <button id="click-photo" style="width: 100px;height:50px;border:2px solid white;border-radius: 20px;">Click
+        Photo</button>
+    </center>
+  </div>
+ <div>
+  <canvas id="canvas" style="border:2px solid white;border-radius: 20px;" width="320" height="240"></canvas>
+  <center><h2><a style="color:aliceblue;" id="hel" href="#">Download Image</a></h2></center>
+ </div>
+  <script>
+
+    let camera_button = document.querySelector("#start-camera");
+    let video = document.querySelector("#video");
+    let click_button = document.querySelector("#click-photo");
+    let canvas = document.querySelector("#canvas");
+    hello()
+    async function hello() {
+      let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      video.srcObject = stream;
+    };
+
+    click_button.addEventListener('click', function () {
+      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+      let image_data_url = canvas.toDataURL('image/jpeg');
+      document.getElementById("hel")
+      
+    });
+  </script>
+</body>
+
+</html>

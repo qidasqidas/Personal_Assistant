@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Page</title>
+    <link rel="icon" href="https://teds-jarvis.netlify.app//iron-pic.png">
+</head>
+<body>    <br><br><br>
+    <center>
+    <h1 style="color:white;">Let's Begin</h1>
+  <br><br><br>
+  <div id="img" class="nine">
+    <p style="color: rgb(216, 198, 198);" id="text">Select A Logo For You</p>
+       <br><br>
+       <div style="display: flex;width: 100%;justify-content: center;">
+      <img src="1.gif"  style="margin:20px;width: 100px;height: 100px;border:none;border-radius: 100%;;" onclick="one()" alt="">
+      <img src="2.gif"  style="margin:20px;width: 100px;height: 100px;border:none;border-radius: 100%;;" onclick="two()" alt="">
+      <img src="3.gif"  style="margin:20px;width: 100px;height: 100px;border:none;border-radius: 100%;;" onclick="three()" alt="">
+      <img src="4.jpg"  style="margin:20px;width: 100px;height: 100px;border:none;border-radius: 100%;;" onclick="four()" alt="">
+      <img src="5.png"  style="margin:20px;width: 100px;height: 100px;border:none;border-radius: 100%;;" onclick="five()" alt="">
+      </div>
+      <h3 id="s">Lion</h3>
+       <br>
+  </div> 
+  <div id="named">
+    <p style="color: rgb(216, 198, 198);" id="text">Let's Start Creating Your Own Personal Assistant
+      <br><br> With
+       Entering Your Name.</p>
+       <br><br>
+       <input type="text" id="Name">
+       <br><br>
+  </div>
+  <div class="nine" id="tune">
+    <p style="color: rgb(216, 198, 198);" id="text">Select a tune</p>
+       <br><br>
+    
+        <div style="color:white">
+          <h4>Unknown</h4>
+          <audio src="unkn.mp3" controls></audio>
+          <button class="side-b" onclick="unkn()">Select</button>
+        </div>
+        <hr><br>
+        <div style="color:white">
+          <h4>Dance monkey</h4>
+          <audio src="dance.mp3" controls></audio>
+          <button class="side-b"onclick="dance()">Select</button>
+        </div>
+        <hr><br>
+        <div style="color:white">
+          <h4>Middle Of the Night Remix</h4>
+          <audio src="middle.mp3" controls></audio>
+          <button class="side-b"onclick="middle()">Select</button>
+        </div>
+        <hr><br>
+        <div style="color:white">
+          <h4>Heat waves</h4>
+          <audio src="heat.mp3" controls></audio>
+          <button class="side-b" onclick="heat()">Select</button>
+        </div></div>
+       <br><br>
+  
+  <div class="nine" id="aged">
+    <p style="color: rgb(216, 198, 198);" id="text">Enter your age</p>
+       <br><br>
+       <input type="number" id="Age">
+       <br><br>
+  </div>
+  <div class="nine" id="pa">
+    <p style="color: rgb(216, 198, 198);" id="text">Enter Your Personal Assistant Name</p>
+       <br><br>
+       <input type="text" id="PAName">
+       <br><br>
+  </div>
+  <div class="nine" id="gitid">
+    <p style="color: rgb(216, 198, 198);" id="text">Enter Your Github Id</p>
+       <br><br>
+       <input type="text" id="gitidf">
+       <br><br>
+  </div>
+  <div class="nine" id="cityname">
+    <p style="color: rgb(216, 198, 198);" id="text">Enter Your City Name</p>
+       <br><br>
+       <input type="text" id="citynamev">
+       <br><br>
+  </div>
+  <div class="nine" id="bd">
+    <p style="color: rgb(216, 198, 198);" id="text">Enter Your Birth Date</p>
+       <br><br>
+       <input type="date" id="bdv">
+       <br><br>
+  </div>
+  <br>
+        <button class="side-b" id="next" onclick="nextbit()">Next</button>
+        <button class="side-b2" id="sum" onclick="sum()">Next</button>
+        <button class="side-b2" id="sum2" onclick="sum2()">Submit</button>
+    </center>
+   
+  
+<script>
+alert("CopyRight©️ Heat waves,Dance Monkey,Middle Night X right")
+        hello()
+        function hello(){
+           const name = localStorage.getItem("Name");
+           if(name){
+            location.replace("main.html");
+           }else{
+               alert("Welcome and meet your own P.A")
+           }
+        }
+        let audio = ""
+function heat(){
+ localStorage.setItem("audio","heat.mp3")
+}
+function dance(){
+  localStorage.setItem("audio","dance.mp3")
+}
+function middle(){
+  localStorage.setItem("audio","middle.mp3")
+}
+function unkn(){
+  localStorage.setItem("audio","unkn.mp3")
+}
+        let who = "1.gif";
+          function one(){
+who = "1.gif";
+            document.getElementById("s").innerHTML = "Lion"
+          }
+          function two(){
+            who = "2.gif";
+            document.getElementById("s").innerHTML = "Hunter"
+          }
+          function three(){
+            who = "3.gif";
+            document.getElementById("s").innerHTML = "Girl"
+          }
+          function four(){
+            who = "4.jpg";
+            document.getElementById("s").innerHTML = "Swag"
+          }
+          function five(){
+            who = "5.png";
+            document.getElementById("s").innerHTML = "Big Eyes"
+          }
+function nextbit(){
+   const namer = localStorage.getItem("Name");
+   if(namer){
+     document.getElementById("named").style.display = "none";
+     document.getElementById("aged").style.display = "inline-block";
+   }else{
+     let namer2 = document.getElementById("Name").value;
+     localStorage.setItem("Name",namer2)
+   }
+   const ager = localStorage.getItem("Age");
+   if(ager){
+     document.getElementById("aged").style.display = "none";
+     document.getElementById("pa").style.display = "inline-block";
+   }else{
+     let ager2 = document.getElementById("Age").value;
+     localStorage.setItem("Age",ager2)
+   }
+   const paer = localStorage.getItem("PA");
+   if(paer){
+     document.getElementById("pa").style.display = "none";
+     document.getElementById("gitid").style.display = "inline-block";
+   }else{
+     let paer2 = document.getElementById("PAName").value;
+     localStorage.setItem("PA",paer2)
+   }
+   const git = localStorage.getItem("GITID");
+   if(git){
+     document.getElementById("gitid").style.display = "none";
+     document.getElementById("cityname").style.display = "inline-block";
+   }else{
+     let git2 = document.getElementById("gitidf").value;
+     localStorage.setItem("GITID",git2)
+   }
+   const city = localStorage.getItem("City");
+   if(city){
+     document.getElementById("cityname").style.display = "none";
+     document.getElementById("bd").style.display = "inline-block";
+   }else{
+     let city2 = document.getElementById("citynamev").value;
+     localStorage.setItem("City",city2)
+   }
+   const bd = localStorage.getItem("BirthDate");
+   if(bd){
+     document.getElementById("bd").style.display = "none";
+     document.getElementById("img").style.display = "inline-block";
+     document.getElementById("sum").style.display = "inline-block";
+     document.getElementById("next").style.display = "none"
+   }else{
+     let bd2 = document.getElementById("bdv").value;
+     localStorage.setItem("BirthDate",bd2)
+   }
+
+
+
+
+} 
+function sum(){
+  localStorage.setItem("Image",who)
+
+document.getElementById("img").style.display = "none"
+document.getElementById("sum2").style.display = "inline-block";
+     document.getElementById("next").style.display = "none"
+     document.getElementById("tune").style.display = "inline-block"
+}
+function sum2(){
+  location.replace("main.html")
+}
+    </script>  
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,200;1,300&display=swap");
+body{
+    background-color: black;
+}
+.profile-img{
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  
+}
+.pib{
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  border: 2px solid black;
+}
+.nine{
+  display: none;
+  width: 100%;
+}
+.side-b{
+    background-color: white;
+    height: 40px;
+    width: 10%;
+    border: 2px solid black;
+    border-radius: 5px;
+    color:black;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.side-b2{
+    background-color: white;
+    height: 40px;
+    width: 10%;
+    border: 2px solid black;
+    border-radius: 5px;
+    color:black;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.side-b:hover{
+    background-color: white;
+    height: 40px;
+    width: 10%;
+    border: 2px solid black;
+    border-radius: 5px;
+    color:black;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:  4px 4px  white;
+}
+.side-b2:hover{
+    background-color: white;
+    height: 40px;
+    width: 10%;
+    border: 2px solid black;
+    border-radius: 5px;
+    color:black;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:  4px 4px  white;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+input{
+    width: 20%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+text-align: center;  
+color: black;  
+}
+    </style>
+</body>
+</html>

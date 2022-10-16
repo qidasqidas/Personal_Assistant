@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mubin's Friday</title>
+</head>
+<body>
+    <img src="https://teds-jarvis.netlify.app/heart.gif" id="pro-img" ondblclick="big()" onclick="recognition.start()" style="width: 240px;height:240px" alt="">
+ <style>
+    body{
+        background-color: black;
+    }
+ </style>
+ <script>
+    var audio = new Audio('https://teds-jarvis.netlify.app/power%20up.mp3');
+const msgs = document.getElementsByClassName("messages");
+const battery = document.querySelector("#battery");
+let sir = localStorage.getItem("Name")
+let city = localStorage.getItem("City")
+let use = 0;
+let townd =""
+let br = 0;
+let api = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=imperial&APPID=143454aa39bbe3442a890cdbf3f9db36';
+
+function big(){
+    readOut("Making It Big");
+    window.open("main.html")
+}
+setInterval(() => {
+    function formatAMPM(date) {
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+      }
+document.getElementById("time").innerHTML = formatAMPM(new Date);
+
+
+},1000 );
+
+setTimeout(() => {
+   document.getElementById("internet").innerHTML = "Online" ;
+}, 1000);
+setInterval(() =>{
+
+        api = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=imperial&APPID=143454aa39bbe3442a890cdbf3f9db36';
+    
+    fetch(api)
+.then(Response => Response.json())
+.then(data => {
+    let name = data['name'];
+    let temp = data['main']['temp'];
+    let desc = data['weather'][0]['description'];
+    let icon = data['weather'][0]['icon'];
+    let wse = data['wind']['speed'];
+    document.getElementById("wins").innerHTML = wse;
+    document.getElementById("name").innerHTML = '<b>'+name+'</b>';
+    document.getElementById("temp").innerHTML = Math.floor((temp - 32) * 5/9) +"°C";
+    document.getElementById("weather").innerHTML = desc;
+    document.getElementById("icon").src = "https://openweathermap.org/img/wn/"+icon+"@2x.png";
+    })  
+},1000)
+
+
+// new speech recognition object
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var recognition = new SpeechRecognition();
+            
+// This runs when the speech recognition service starts
+recognition.onstart = function() {
+    recognition.continious=true;
+
+};
+
+recognition.onspeechend = function() {
+    // when user is done speaking
+    recognition.stop();
+}
+              
+// This runs when the speech recognition service returns result
+recognition.onresult = function(event) {
+    var transcript = event.results[0][0].transcript;
+    var confidence = event.results[0][0].confidence;
+    transcript = transcript.toLowerCase();
+
+if (transcript.includes("hi") ||transcript.includes("hello")|| transcript.includes("Hi") || transcript.includes("hello")) {
+    readOut("Hello "+sir);
+}
+if (transcript.includes("open youtube")) {
+    readOut("Opening youtube sir");
+    window.open("https://www.youtube.com/");
+}
+if (transcript.includes("open google")) {
+    readOut("Opening google sir");
+    window.open("https://www.google.com/");
+}
+if (transcript.includes("open firebase")) {
+    readOut("Opening firebase sir");
+    window.open("https://console.firebase.google.com/?pli=1");
+}
+if (transcript.includes("open github ")) {
+    readOut("Opening github sir");
+    window.open("https://github.com/");
+}
+if (transcript.includes("open github profile")) {
+    readOut("Opening github prfolie sir");
+    window.open("");
+}
+if (transcript.includes("create a repository")) {
+    readOut("Creating repository in github sir");
+    window.open("https://github.com/new");
+}
+if(transcript.includes("search for")){
+
+    let input = transcript.split("");
+    input.splice(0,11);
+    input.pop();
+    let  sinput = input.join("").split(" ").join(" ");
+    readOut("here's the result for " + sinput + " "+sir);
+    input = input.join("").split(" ").join("+");
+    console.log(input);
+    window.open("https://www.google.com/search?q="+input)
+}
+if(transcript.includes("play")){
+    let input = transcript.split("");
+    input.splice(0,4);
+    input.pop();    
+   let  sinput = input.join("").split(" ").join(" ");
+   readOut("here's the result for " + sinput + " "+sir);
+   input = input.join("").split(" ").join("+");
+
+    console.log(input);
+    window.open("https://youtube.com/results?search_query="+input)
+}
+if(transcript.includes("internet")){
+    readOut("Your Internet status is online "+sir)
+}
+if(transcript.includes("change my info")){
+ location.replace("infoc.html");
+}
+if(transcript.includes("show my info")){
+    location.replace("infoc1.html");
+   }
+   if(transcript.includes("reset")){
+readOut("reset in progress");
+localStorage.clear()
+location.replace("index.html")
+
+   }
+if(transcript.includes("time")){
+
+    function formatAMPM(date) {
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+      }
+readOut(formatAMPM(new Date));  
+}
+if(transcript.includes("battery")){
+
+        navigator.getBattery().then(function(battery) {
+    
+            var level = battery.level;
+    var kl = level * 100;
+      
+          readOut(kl + "%"+ " "+sir )
+        });
+}
+if(transcript.includes("your name")){
+readOut("My name is "+localStorage.getItem("PA")+sir);
+}
+if(transcript.includes("my name")){
+readOut("Your name is "+sir)
+}
+
+if(transcript.includes("date")){
+    let monthl = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
+    let day = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+    b = new Date();
+    let month= monthl[b.getMonth()]
+    let dayl = day[b.getDay()];
+    let date = b.getDate();
+    let year = b.getFullYear();
+readOut("The date is "+date+" "+month+" "+year+" "+sir); 
+console.log("The date is "+date+" "+month+" "+year+" "+sir)
+}
+if(transcript.includes("commands")){
+    readOut("Command's window is opening");
+    window.open("commands.html","","width=20px,heigt=20px")
+}
+if(transcript.includes("how are you")){
+    readOut("I am fine "+sir+" what about you")
+}
+if(transcript.includes("i am fine")){
+    readOut("Excellent! " +sir)
+}
+if(transcript.includes("bye")){
+readOut("bye "+sir);
+}
+if(transcript.includes("my age")){
+    readOut("You are "+localStorage.getItem("Age")+" year old")
+}
+if(transcript.includes("i live")){
+readOut("You live in "+city)
+}
+if(transcript.includes("when is my birthday")){
+    readOut("Your Birthday is on "+localStorage.getItem("BirthDate").charAt(5)+localStorage.getItem("BirthDate").charAt(6)+localStorage.getItem("BirthDate").charAt(7)+localStorage.getItem("BirthDate").charAt(8)+localStorage.getItem("BirthDate").charAt(9))
+}
+console.log(transcript);
+};
+  function readOut(message){
+     const speech = new SpeechSynthesisUtterance();
+     const allVoices = speechSynthesis.getVoices();
+     speech.text = message;
+     speech.voice = allVoices[0];
+     speech.volume = 1;
+     window.speechSynthesis.speak(speech);
+     console.log("speaking out")
+
+ }     
+ function big(){
+    readOut("Making It Big");
+    window.open("main.html")
+}
+function small(){
+    window.open ("small.html",
+    "mywindow","menubar=1,resizable=1,width=250,height=250");
+}
+
+
+
+setInterval(() => {
+    navigator.getBattery().then(function(battery) {
+
+        var level = battery.level;
+var rl = level * 100;
+        document.getElementById("battery-level").innerHTML = Math.floor(rl) + "%";
+    });
+ 
+ }, 1000);
+
+window.onload = function(){
+    let monthl = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
+    let day = [" " ,"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+    b = new Date();
+    let month= monthl[b.getMonth()]
+    let dayl = day[b.getDay()];
+    let date = b.getDate();
+    let year = b.getFullYear();
+    document.getElementById("month").innerHTML = month;
+    document.getElementById("day").innerHTML = dayl;
+    document.getElementById("date").innerHTML = date;
+    document.getElementById("year").innerHTML = year;
+
+
+}
+ </script>
+</body>
+</html>
